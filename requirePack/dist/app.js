@@ -1,0 +1,1 @@
+define("b",["jquery"],function(e){console.log(e)}),require.config({paths:{a:"a",b:"b",jquery:"http://hd.tzj.iwgame.com/js/jquery.min"},shim:{b:{deps:["jquery"]}}}),define("app",["jquery","b"],function(e){console.log(e)});

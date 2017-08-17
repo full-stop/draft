@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <script language="javascript" type="text/javascript" src="http://localhost/scripts/lib/jquery/jquery.js"></script>
+    <script type="text/javascript">
+    
+    $(document).ready(function(){
+	$('#cvt').click(function(){
+	    var iTxt = $('#ipt').val();
+	    
+	    iTxt = iTxt.replace(/http:\/\/res.shumenol.loc\/dev2.0/g,'http://localhost');
+	    
+	    var aTxt = iTxt.split('\n');
+	    
+	    var rTxt='';
+	    
+	    $.each(aTxt, function(_i, _txt){
+		
+		var reg = new RegExp('[\s ]+','g');
+		
+		if(_txt.replace(reg,'')!=''){
+		    rTxt += 'html.push(\'' + _txt + '\');\n';
+		    
+		}
+	    });	    
+	    
+	    $('#result').val(rTxt);
+	});
+    });
+    
+    </script>
+</head>
+
+<body>
+    <textarea id="ipt" style="width:1000px; height:200px;"></textarea>
+    
+    <input id="cvt" type="button" name="Convert" value="Convert" />
+    
+    <br />
+    <br />
+    <br />
+    
+    <textarea id="result" style="width:1000px; height:200px;"></textarea>
+    
+</body>
+
+</html>
