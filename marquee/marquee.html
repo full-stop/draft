@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            list-style: none;
+            margin:0;
+            padding:0
+        }
+
+        ul{
+            height:40px;
+            overflow:hidden;
+        }
+        li{
+            line-height: 40px;
+            text-align: center;
+            width:100%;
+            font-size:18px;
+            font-family:'Inconsolata'
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Vertical:</h2>
+    <ul id="vertical">
+        <li>Do not, for one repulse, forgo the purpose that you resolved to effort. </li>
+        <li>The man who has made up his mind to win will never say " Impossible".(Napoleon )</li>
+        <li>There is no such thing as darkness; only a failure to see.</li>
+        <li>Time is a bird for ever on the wing. ( T. W. Robertson )</li>
+        <li>If you do not learn to think when you are young, you may never learn.</li>
+        <li>A day is a miniature of eternity. ( Emerson )</li>
+        <li>Morality may consist solely in the courage of making a choice. </li>
+        <li> beautiful flowers of all. </li>
+        <li>Man is not made for defeat. A man can be destroyed but not defeated.</li>
+        <li>Hemingway, The Old Man and the Sea.</li>
+        <li>Man is not much beside the great birds and beasts.</li>
+        <li> There are more things to admire in men than to despise.</li>
+    </ul>
+
+    <h2>horiz</h2>
+        <ul id="horiz">
+        <li>Do not, for one repulse, forgo the purpose that you resolved to effort. </li>
+        <li>The man who has made up his mind to win will never say " Impossible".(Napoleon )</li>
+        <li>There is no such thing as darkness; only a failure to see.</li>
+        <li>Time is a bird for ever on the wing. ( T. W. Robertson )</li>
+        <li>If you do not learn to think when you are young, you may never learn.</li>
+        <li>A day is a miniature of eternity. ( Emerson )</li>
+        <li>Morality may consist solely in the courage of making a choice. </li>
+        <li> beautiful flowers of all. </li>
+        <li>Man is not made for defeat. A man can be destroyed but not defeated.</li>
+        <li>Hemingway, The Old Man and the Sea.</li>
+        <li>Man is not much beside the great birds and beasts.</li>
+        <li> There are more things to admire in men than to despise.</li>
+    </ul>
+
+    <script src="marquee.js"></script>
+    <script>
+        marquee({
+            box:document.getElementById('vertical'),
+            time:30,
+            delay:2500
+        });
+    </script>
+</body>
+</html>
