@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        *{
+        * {
             list-style: none;
-            margin:0;
-            padding:0
+            margin: 0;
+            padding: 0
         }
 
-        ul{
-            height:40px;
-            overflow:hidden;
+        .vertical {
+            height: 40px;
+            overflow: hidden;
         }
-        li{
+
+        .vertical li {
             line-height: 40px;
             text-align: center;
-            width:100%;
-            font-size:18px;
-            font-family:'Inconsolata'
+            width: 100%;
+            font-size: 18px;
+            font-family: 'Inconsolata'
         }
 
+        .horiz {
+            overflow: hidden;
+            height: 30px;
+            width: 500px;
+            white-space: nowrap;
+        }
+
+        .horiz li {
+            display: inline;
+        }
     </style>
 </head>
+
 <body>
     <h2>Vertical:</h2>
-    <ul id="vertical">
+    <ul class="vertical" id="vertical">
         <li>Do not, for one repulse, forgo the purpose that you resolved to effort. </li>
         <li>The man who has made up his mind to win will never say " Impossible".(Napoleon )</li>
         <li>There is no such thing as darkness; only a failure to see.</li>
@@ -44,7 +57,7 @@
     </ul>
 
     <h2>horiz</h2>
-        <ul id="horiz">
+    <ul class="horiz" id="horiz">
         <li>Do not, for one repulse, forgo the purpose that you resolved to effort. </li>
         <li>The man who has made up his mind to win will never say " Impossible".(Napoleon )</li>
         <li>There is no such thing as darkness; only a failure to see.</li>
@@ -59,13 +72,67 @@
         <li> There are more things to admire in men than to despise.</li>
     </ul>
 
+    <!-- <script src="http://tzj2.iwgame.com/js/jquery.min.js"></script> -->
+    <!-- <script src="http://act-res.tzj2.iwgame.cc/common/lib/require.js"></script> -->
     <script src="marquee.js"></script>
     <script>
+
+        /* CommonJS */
+
+        // var marquee = require('./maruqee');
+
+        /* AMD */
+        // require.config({
+        //     baseUrl: '',
+        //     paths: {
+        //         marquee: 'marquee'
+        //     }
+        // })
+        //
+        // require(['marquee'], function(marquee) {
+        //     marquee({
+        //         box: document.getElementById('vertical'),
+        //         time: 30,
+        //         delay: 2500
+        //     });
+        //     marquee({
+        //         box: document.getElementById('horiz'),
+        //         time: 30,
+        //         delay: 2500,
+        //         type: 'horiz'
+        //     });
+        // })
+
+
+        /* Jquery */
+
+        // $.fn.marquee({
+        //     box: document.getElementById('vertical'),
+        //     time: 30,
+        //     delay: 2500
+        // });
+        // $.fn.marquee({
+        //     box: document.getElementById('horiz'),
+        //     time: 30,
+        //     delay: 2500,
+        //     type:'horiz'
+        // });
+
+        /* Default */
         marquee({
-            box:document.getElementById('vertical'),
-            time:30,
-            delay:2500
+            box: document.getElementById('vertical'),
+            time: 30,
+            delay: 2500
         });
+        marquee({
+            box: document.getElementById('horiz'),
+            time: 30,
+            delay: 2500,
+            type:'horiz'
+        });
+
+
     </script>
 </body>
+
 </html>

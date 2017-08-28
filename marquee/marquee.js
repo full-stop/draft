@@ -1,18 +1,19 @@
 /**
  * @Date:   2017-08-17T09:43:52+08:00
- * @Email:  sgt_ah@163.com
  * @Filename: marquee.js
- * @Last modified time: 2017-08-28T14:33:14+08:00
- * @License: MIT license
- * @Version: 0.1
+ * @Last modified time: 2017-09-01T13:56:49+08:00
+ * @Version：v1.0
  */
 
-!(function(win, doc) {
+!(function(root) {
 
-    function vertical(box, scrollHeight, time, delay) {
+    function vertical(params) {
 
-        var scrollTop;
+        var box = params.box;
         var scrollHeight = scrollHeight || 0;
+        var time = params.time || 36;
+        var delay = params.delay || 1000;
+        var scrollTop;
         var itmes = box.children;
         var len = itmes.length;
 
@@ -42,19 +43,68 @@
 
     }
 
-    function marquee(params) {
+    function horizontal(params) {
 
-        var box = params.box || '';
-        var type = params.type || 'vertical';
+        var scrollLeft;
+        var scrollWidth = 0;
+        var box = params.box;
         var time = params.time || 36;
         var delay = params.delay || 1000;
-        var scrollHeight = params.scrollHeight || 0;
+        var itmes = box.children;
+        var len = itmes.length;
 
-        if (box && type === 'vertical') {
-            vertical(box, scrollHeight, time, delay);
+        for (var i = 0; i < itmes.length; i++) {
+            scrollWidth += itmes[i].offsetWidth * 1;
         }
+
+        box.appendChild(itmes[0].cloneNode(true));
+
+        setTimeout(function() {
+
+            scrollLeft = box.scrollLeft;
+
+            if (scrollLeft >= scrollWidth) {
+                box.scrollLeft = 0;
+            } else {
+                box.scrollLeft++;
+            }
+
+            setTimeout(arguments.callee, time);
+
+        }, time);
+
 
     }
 
-    window.marquee = marquee;
-}(window, document));
+
+    function marquee(params) {
+
+        var type = params.type || 'vertical';
+
+        if (!params.box) throw new Error('_NOT_FIND_ELEMENT_');
+
+        type === 'vertical' ? vertical(params) : horizontal(params);
+
+    }
+
+
+    if (typeof module != 'undefined' && typeof exports === 'object') {
+        //CommonJS
+        module.exports = marquee;
+    } else if (typeof define != 'undefined' && define.amd) {
+
+        //AMD
+        define(function() {
+            return marquee;
+        });
+
+    } else if (typeof $ === 'function') {
+        //jQuery
+        $.fn.marquee = marquee;
+
+    } else {
+
+        root.marquee = marquee;
+    }
+
+}(this));
