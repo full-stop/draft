@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-17T09:43:52+08:00
  * @Filename: marquee.js
- * @Last modified time: 2017-09-01T13:56:49+08:00
+ * @Last modified time: 2017-09-01T14:06:28+08:00
  * @Version：v1.0
  */
 
@@ -49,9 +49,7 @@
         var scrollWidth = 0;
         var box = params.box;
         var time = params.time || 36;
-        var delay = params.delay || 1000;
         var itmes = box.children;
-        var len = itmes.length;
 
         for (var i = 0; i < itmes.length; i++) {
             scrollWidth += itmes[i].offsetWidth * 1;
