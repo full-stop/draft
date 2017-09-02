@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-08-17T09:43:52+08:00
  * @Filename: marquee.js
- * @Last modified time: 2017-09-01T14:06:28+08:00
+ * @Last modified time: 2017-09-02T23:25:36+08:00
  * @Version：v1.0
  */
 
@@ -18,7 +18,7 @@
         var len = itmes.length;
 
         box.appendChild(itmes[0].cloneNode(true));
-
+ 
         if (!scrollHeight) {
             scrollHeight = itmes[0].offsetHeight;
         }
