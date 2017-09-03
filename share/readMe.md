@@ -24,6 +24,7 @@ new share({
 
 ## API说明 ##
 
+```
 |-- dom [object]        ：指定生成分享组件的dom对象。
 |-- type [array]            ：指定分享的类型。默认值为空数组，表示生成全部的分享类型。
     |- weibo [string]      ：分享到新浪微博。
@@ -90,6 +91,7 @@ new share({
 |--kx [object]         ：单独设置开心分享的参数。
     |- url             ：单独设置豆瓣分享的url。
     |- title            ：单独设置豆瓣分享的标题。
+```
 
 ## 关于微信二维码分享的动态生成 ##
 可以使用腾讯提供的在线二维码生成服务 `http://mobile.qq.com/qrcode?url=text&width=150&height=150`。
