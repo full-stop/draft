@@ -1,9 +1,11 @@
 /**
+ * @Author: gtShen
  * @Date:   2017-09-03T01:36:56+08:00
- * @Last modified time: 2017-09-03T02:15:39+08:00
+ * @Email:  sgt_ah@163.com
+ * @Filename: share.js
+ * @Last modified by:   gtShen
+ * @Last modified time: 2017-09-03T16:55:52+08:00
  */
-
-
 
 (function(root) {
 
@@ -50,8 +52,10 @@
     share.prototype.bind = function() {
         var _this = this;
         this.dom.onclick = function(ev) {
-            var e = ev || window.event,
-                oTarget = e.target || e.srcElement;
+
+            var e = ev || window.event;
+            var oTarget = e.target || e.srcElement;
+
             (oTarget.nodeName === 'A' && _this.core(oTarget));
         }
     }
@@ -71,11 +75,17 @@
 
         function wx() {
 
-            var e = document.getElementById('share-qrcode-box') || false,
-                img = new Image(),
-                _w = 0,
-                _h = 0,
-                oDiv = null;
+            var e = document.getElementById('share-qrcode-box') || false;
+            var shareWxCodeImg = document.getElementById('share-wx-qrcode-img') || null;
+            var img = new Image();
+            var _w = 0;
+            var _h = 0;
+            var oDiv = null;
+
+            if(_this.params.target != 'blank' && shareWxCodeImg){
+                shareWxCodeImg.parentNode.removeChild(shareWxCodeImg);
+                return ;
+            }
 
             if (!e) {
                 if (_this.params.target == 'blank') {
@@ -89,9 +99,9 @@
                         oDiv.className = 'share-qrcode';
                         oDiv.id = 'share-qrcode-box';
                         oDiv.innerHTML = '<img src="' + _this.params.qrcode + '" /><span href="javascript:;" class="share-close">&#10005;</span>';
-                        oDiv.style.cssText = 'padding:10px;position:fixed;_position:absolute;left:50%;top:50%;margin-left:' + -(_w + 20) / 2 + 'px;margin-top:' + -(_h + 20) / 2 + 'px;';
+                        oDiv.style.cssText = 'padding:5px;position:fixed;_position:absolute;left:50%;top:50%;margin-left:' + -(_w + 20) / 2 + 'px;margin-top:' + -(_h + 20) / 2 + 'px;';
                         document.body.appendChild(oDiv);
-                        oDiv.children[1].style.cssText = "position:absolute;cursor:pointer;";
+                        oDiv.children[1].style.cssText = "position:absolute;cursor:pointer;right:-20px;top:-15px;";
                         oDiv.children[1].onclick = function() {
                             var e = document.getElementById('share-qrcode-box');
                             document.body.removeChild(e);
@@ -102,6 +112,7 @@
 
                 } else {
                     img.src = _this.params.qrcode;
+                    img.id = 'share-wx-qrcode-img';
                     _this.dom.style.cssText = 'position:relative';
                     _this.dom.appendChild(img);
                 }
@@ -122,7 +133,7 @@
                     result += 'url=' + urls + '&title=' + title + '&desc=' + desc + '&summary=' + summary + '&pics=' + images + '&site=' + site;
                     break;
                 case 'qqzone':
-                    result += 'url=' + urls + '&title=' + title + '&desc=' + desc + '&summary=' + summary + '&pic=' + images + '&site=' + site;
+                    result += 'url=' + urls + '&title=' + title + '&desc=' + desc + '&summary=' + summary + '&pics=' + images + '&site=' + site;
                     break;
                 case 'rr':
                     result += 'resourceUrl=' + urls + '&title=' + title + '&description=' + desc + '&pic=' + images;
@@ -140,7 +151,9 @@
                     result += '&url=' + urls + '&rtitle=' + title;
                     break;
             }
-            window.open(result);
+
+             window.open(result,'_blank','width=800px,height=500px,top='+(screen.height-500)/2+',left='+(screen.width-800)/2+',toolbar=no,menubar=no,scrollbars=no,resizable=1,location=no,status=0');
+
         } else {
             wx();
         }
@@ -166,4 +179,4 @@
 
     root.share = share;
 
-})(this)
+})(this);
