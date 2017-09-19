@@ -1,0 +1,256 @@
+/**
+ * @Date:   2017-09-18T13:41:54+08:00
+ * @Filename: index.css
+ * @Last modified time: 2017-09-19T16:49:43+08:00
+ */
+
+body, html {
+    width: 100%;
+    max-width: 640px;
+    margin: 0px auto;
+}
+
+.wrap {
+    width: 100%;
+    background: #fff0d9 url(../images/hb-bg.jpg) no-repeat;
+    background-size: 100% auto;
+    overflow: hidden;
+    font-family: 'Microsoft YaHei'
+}
+
+.active-time {
+    font-size: .24rem;
+    color: #480817;
+    text-align: center;
+    margin-top: 3.26rem;
+    line-height: .27rem;
+}
+
+.wrap h2 {
+    line-height: .28rem;
+    text-align: center;
+    color: #fffffe;
+    font-size: .24rem;
+    margin-top: 1.24rem;
+}
+
+.wrap h3 {
+    font-size: .6rem;
+    color: #ffed28;
+    margin-top: .1rem;
+    line-height: .75rem;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.wrap .note {
+    text-align: center;
+    color: #fffffe;
+    font-size: .24rem;
+}
+
+.revice-btn {
+    width: 4.96rem;
+    height: .92rem;
+    display: block;
+    border: none;
+    margin: 0 auto;
+    background: url(../images/revice-btn.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: .25rem;
+}
+
+.qr-code {
+    width: 1.77rem;
+    height: 1.77rem;
+    padding: .04rem;
+    background: rgba(255, 255, 255, .5);
+    margin: .34rem auto 0 auto;
+    box-shadow: inset 1px 1px 2px rgba(255, 255, 255, .8), inset -1px -1px 2px rgba(255, 255, 255, .8);
+}
+
+.qr-code img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.qr-note {
+    font-size: .2rem;
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    line-height: .37rem;
+}
+
+dl {
+    margin: 0px .3rem;
+}
+
+dl dt {
+    line-height: .45rem;
+    font-size: .36rem;
+    margin-bottom: .16rem;
+    ;
+    font-weight: bold;
+}
+
+dl dd {
+    line-height: .36rem;
+    font-size: .22rem;
+    color: #000;
+}
+
+.explain {
+    margin-top: .55rem;
+    padding-bottom: .32rem;
+    border-bottom: 1px solid #000
+}
+
+.rule {
+    margin-top: .25rem;
+    padding-bottom: .1rem;
+}
+
+.mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5)
+}
+
+.pop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fffff5;
+    border-radius: 8px;
+    animation-duration: .5s;
+    font-family: 'Microsoft YaHei';
+}
+
+.pop .close {
+    position: absolute;
+    width: .28rem;
+    height: .28rem;
+    right: 0;
+    top: 0;
+    background: url(../images/close.png) no-repeat;
+    background-size: 100% 100%;
+    right: .22rem;
+    top: .22rem;
+}
+
+.pop .pop-btn {
+    display: block;
+    width: 3.77rem;
+    height: .7rem;
+    text-align: center;
+    line-height: .7rem;
+    font-size: .24rem;
+    color: #000;
+    margin: 0px auto;
+    background: url(../images/btn.png) no-repeat;
+    background-size: 100% 100%;
+    letter-spacing: 2px;
+}
+
+.pop-alert {
+    width: 5.8rem;
+    height: 3.2rem;
+}
+
+.pop-alert .pop-in {
+    width: 100%;
+    height: 100%;
+}
+
+.pop-alert .pop-in .content {
+    width: 100%;
+    height: 1.6rem;
+    font-size: .3rem;
+    line-height: .48rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: .5rem;
+}
+
+.pop-mobile {
+    width: 5.8rem;
+    height: 3.5rem;
+}
+
+.pop-mobile h4 {
+    line-height: 1rem;
+    height: 1rem;
+    color: #000;
+    font-size: .3rem;
+    text-align: center;
+}
+
+.pop-mobile ul {
+    width: 4.75rem;
+    margin: 0px auto;
+    margin-bottom: 0.25rem
+}
+
+.pop-mobile li {
+    overflow: hidden;
+    margin-bottom: .2rem;
+}
+
+.pop-mobile li label, .pop-mobile li input, .pop-mobile li button {
+    float: left;
+}
+
+.pop-mobile li label {
+    width: .93rem;
+    text-align: right;
+    color: #000;
+    font-size: .22rem;
+    line-height: .58rem;
+}
+
+.pop-mobile li input {
+    height: .58rem;
+    line-height: .58rem;
+    background: #7f7f7a;
+    border-radius: .06rem;
+    margin-left: .1rem;
+    border: none;
+    font-size: .18rem;
+    color: #fff;
+    font-family: 'Microsoft YaHei';
+    text-indent: .05rem
+}
+
+.pop-mobile .mobile {
+    width: 3.65rem;
+}
+
+.pop-mobile .ver {
+    width: 2rem;
+}
+
+.pop-mobile li button {
+    width: 1.57rem;
+    height: .58rem;
+    line-height: .58rem;
+    text-align: center;
+    color: #000;
+    font-size: .22rem;
+    font-family: 'Microsoft YaHei';
+    margin-left: 8px;
+    background: #fdcb00;
+    border-radius: 6px;
+    border: none;
+}

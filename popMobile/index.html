@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scale=0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.min.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/rem.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1 class="active-time">活动时间：待定~待定~</h1>
+        <h2>您当前已累计红包</h2>
+        <h3>10/50 元</h3>
+        <p class="note">（累计至50元后可领取）</p>
+        <button class="revice-btn"></button>
+        <div class="qr-code">
+            <img src="images/qrcode.jpg" border="0" alt="麻将" />
+        </div>
+        <p class="qr-note">长按扫码关注公众号</p>
+        <dl class="explain">
+            <dt>活动说明</dt>
+            <dd>
+                1、玩家累计可领取的红包达到50元，即可在本页面中进行领取；<br/> 2、红包将通过微信公众号发放，领取前，请关注微信公众号（XXXXXXX）；
+                <br/> 3、当您首次领取红包时，将会提示您进行手机号验证。手机号仅做验证，将不会进行信息采集；
+                <br/> 4、将游戏分享至朋友圈，可以使新注册的玩家获得5元红包，可以让亲朋好友一起来参与红包盛宴。
+                <br/> 5、活动期间内，官方将会赠送大量钻石，以供玩家们免费畅玩、畅领红包。
+            </dd>
+        </dl>
+        <dl class="rule">
+            <dt>活动规则</dt>
+            <dd>
+                1、本活动时间为：待定~待定<br/> 2、活动期间内，玩家每在8局游戏中成为一次【大赢家】，均可获得1~5元随机红包；
+                <br/> 3、每位玩家每天可领取红包上限为50元；
+                <br/> 4、玩家累计可领取的红包达到50元，即可在本页面中进行领取；
+                <br/> 5、若因没有关注公众号而无法获得红包的，将不予补偿；
+                <br/> 6、所有新玩家进入本活动页面将获得5元红包奖励，进入游戏成为大赢家后可获得更多红包；
+                <br/> 7、活动结束后，用户无法继续领取尚未领取的红包。
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pop pop-mobile hide">
+        <a href="javascript:;" class="close pop-close"></a>
+        <div class="pop-in">
+            <h4>初次领取红包需进行验证</h4>
+            <ul>
+                <li>
+                    <label for="mobile">手机号码</label>
+                    <input type="text" class="mobile" name="" id="mobile" />
+                </li>
+                <li>
+                    <label for="ver">验证码</label>
+                    <input type="text" class="ver" name="" id="ver" />
+                    <button class="send">发送验证码</button>
+                </li>
+            </ul>
+            <a href="javascript:;" class="pop-btn">确定</a>
+        </div>
+    </div>
+
+    <div class="pop pop-alert hide">
+        <a href="javascript:;" class="close pop-close"></a>
+        <div class="pop-in">
+            <div class="content">您尚未累计到50元<br/>暂时无法领取</div>
+            <a href="javascript:;" class="pop-btn">确定</a>
+        </div>
+    </div>
+
+    <script src="js/jquery_mobile.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
