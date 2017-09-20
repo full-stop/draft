@@ -1,10 +1,10 @@
 /**
  * @Date:   2017-09-19T09:49:24+08:00
  * @Filename: index.js
- * @Last modified time: 2017-09-19T16:51:35+08:00
+ * @Last modified time: 2017-09-20T09:54:23+08:00
  */
 
-(function($) {
+(function(slef, $) {
 
     function onAnimationEnd(element, callback) {
 
@@ -15,7 +15,6 @@
         var n = true;
 
         function handle(e) {
-
             if (n && e.target === this) {
                 callback && callback();
                 n = false;
@@ -48,6 +47,7 @@
     function popMobileCloseAll(params) {
 
         var $pop = $('.pop-mobile-container');
+        var $mask = $('.mask');
 
         if (params.hideClass) {
             $pop.removeAttr('style').removeClass(params.hideClass).removeClass('pop-mobile-container');
@@ -55,8 +55,8 @@
             $pop.removeAttr('style').removeClass('pop-mobile-container');
         }
 
-        $('.mask').remove();
-        $pop = null;
+        $mask.remove();
+        $pop = $mask = null;
 
     }
 
@@ -74,6 +74,7 @@
         } else {
             d.removeAttr('style').removeClass('pop-mobile-container');
             m.remove();
+            d = m = null;
         }
 
     }
@@ -85,7 +86,7 @@
         var $close = params.close ? $(params.close) : $dom.find('.pop-close');
         var zindex = params.zindex || 0;
         var popNum = $('.pop-mobile-container').length;
-        var indep = params.indep || false;
+        var indep = params.indep || 0;
 
         $dom.css({
             'position': 'fixed',
@@ -140,17 +141,24 @@
     }
 
     function popMobile(params) {
-
-        if (params.closeAll) {
-            popClose(true)
-            return;
-        }
-
         new popOpen(params);
+    }
+
+    if (typeof module != 'undefined' && typeof exports === 'object') {
+        module.exports = popMobile;
+        return;
+    }
+
+    if (typeof define != 'undefined' && define.amd) {
+        define(['jquery'], function() {
+            return popMobile;
+        });
+        return;
     }
 
     if (typeof $ === 'function') {
         $.fn.popMobile = popMobile;
         $.fn.popMobileCloseAll = popMobileCloseAll;
     }
-}(jQuery))
+
+}(this, jQuery))
