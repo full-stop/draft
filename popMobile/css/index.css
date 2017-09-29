@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-09-18T13:41:54+08:00
  * @Filename: index.css
- * @Last modified time: 2017-09-19T16:49:43+08:00
+ * @Last modified time: 2017-09-29T15:44:35+08:00
  */
 
 body, html {
@@ -253,4 +253,9 @@ dl dd {
     background: #fdcb00;
     border-radius: 6px;
     border: none;
+}
+
+.pop {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
 }

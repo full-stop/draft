@@ -1,7 +1,7 @@
 /**
  * @Date:   2017-09-19T09:49:24+08:00
  * @Filename: index.js
- * @Last modified time: 2017-09-20T09:54:23+08:00
+ * @Last modified time: 2017-09-29T16:11:53+08:00
  */
 
 (function(slef, $) {
@@ -11,14 +11,13 @@
         var verdors = ['a', 'webkitA', 'MozA', 'OA', 'msA'];
         var endEvents = ['animationend', 'webkitAnimationEnd', 'animationend', 'oAnimationEnd', 'MSAnimationEnd'];
         var styles = document.createElement('div').style;
-        var event, f;
-        var n = true;
+        var event;
 
         function handle(e) {
-            if (n && e.target === this) {
+            if (e.target === this) {
                 callback && callback();
-                n = false;
             }
+            element.removeEventListener(event, handle, false);
         }
 
         if ('onanimationend' in window) {
@@ -36,7 +35,6 @@
         }
 
         if (event && element) {
-            element.removeEventListener(event, handle, false);
             element.addEventListener(event, handle, false);
         } else {
             callback && callback();
@@ -60,21 +58,25 @@
 
     }
 
-    function popClose(d, m, params) {
+    function popClose(params, $mask) {
+
+        var $dom = params.dom;
 
         if (params.hideClass) {
 
-            d.removeClass(params.showClass).addClass(params.hideClass);
-            onAnimationEnd(d[0], function() {
-                d.removeAttr('style').removeClass('pop-mobile-container').removeClass(params.hideClass);
-                m.remove();
+            $dom.removeClass(params.showClass).addClass(params.hideClass);
+            onAnimationEnd($dom[0], function() {
+
+                $dom.removeAttr('style').removeClass('pop-mobile-container').removeClass(params.hideClass);
+                $mask.remove();
                 params.after && params.after();
-                d = m = null;
+
+                $dom = $mask = null;
             });
         } else {
-            d.removeAttr('style').removeClass('pop-mobile-container');
-            m.remove();
-            d = m = null;
+            $dom.removeAttr('style').removeClass('pop-mobile-container');
+            $mask.remove();
+            $dom = $mask = null;
         }
 
     }
@@ -88,56 +90,57 @@
         var popNum = $('.pop-mobile-container').length;
         var indep = params.indep || 0;
 
-        $dom.css({
-            'position': 'fixed',
-            'left': 0,
-            'top': 0,
-            'right': 0,
-            'bottom': 0,
-            'margin': 'auto',
-            'zIndex': zindex + popNum
-        });
-
-        $mask.css({
-            'position': 'fixed',
-            'left': 0,
-            'top': 0,
-            'right': 0,
-            'bottom': 0,
-            'width': '100%',
-            'height': '100%',
-            'background': 'rgba(0,0,0,.5)',
-            'zIndex': zindex + popNum
-        });
-
         if (indep) {
             popMobileCloseAll(params);
         }
 
         if (!$dom.is('.pop-mobile-container')) {
+
+            $dom.css({
+                'position': 'fixed',
+                'left': 0,
+                'top': 0,
+                'right': 0,
+                'bottom': 0,
+                'margin': 'auto',
+                'zIndex': zindex + popNum
+            });
+
+            $mask.css({
+                'position': 'fixed',
+                'left': 0,
+                'top': 0,
+                'right': 0,
+                'bottom': 0,
+                'width': '100%',
+                'height': '100%',
+                'background': 'rgba(0,0,0,.5)',
+                'zIndex': zindex + popNum
+            });
+
             if (params.showClass) {
-                $dom.show().addClass(params.showClass);
                 onAnimationEnd($dom[0], function() {
                     params.before && params.before();
                 });
+                $dom.show().addClass(params.showClass);
             } else {
                 $dom.show();
             }
+
             $dom.before($mask);
+
+            $dom.addClass('pop-mobile-container');
+
+            $close.off('tap');
+            $close.on('tap', function() {
+                popClose(params, $mask);
+            });
+
+            $dom.off('touchmove');
+            $dom.on('touchmove', function(e) {
+                e.preventDefault();
+            });
         }
-
-        $dom.addClass('pop-mobile-container');
-
-        $close.off('click');
-        $close.on('click', function() {
-            popClose($dom, $mask, params);
-        });
-
-        $dom.off('touchmove');
-        $dom.on('touchmove', function(e) {
-            e.preventDefault();
-        });
-
     }
 
     function popMobile(params) {
@@ -145,20 +148,38 @@
     }
 
     if (typeof module != 'undefined' && typeof exports === 'object') {
-        module.exports = popMobile;
+        exports.popMobile = popMobile;
+        exports.popMobileCloseAll = popMobileCloseAll;
         return;
     }
 
     if (typeof define != 'undefined' && define.amd) {
-        define(['jquery'], function() {
-            return popMobile;
+        define(['jquery'], function(require, exports, module) {
+            exports.popMobile = popMobile;
+            exports.popMobileCloseAll = popMobileCloseAll;
         });
         return;
     }
 
     if (typeof $ === 'function') {
-        $.fn.popMobile = popMobile;
-        $.fn.popMobileCloseAll = popMobileCloseAll;
+        $.popMobile = popMobile;
+        $.popMobileCloseAll = popMobileCloseAll;
+        return;
     }
 
-}(this, jQuery))
+}(this, jQuery));
+
+
+$('.revice-btn').tap(function() {
+    $.popMobile({
+        'dom': $('.pop-mobile'),
+        'showClass': 'bounceIn animated',
+        'hideClass': 'bounceOut animated'
+    });
+})
+
+$('.mobile-btn').tap(function() {
+    $.popMobile({
+        'dom': $('.pop-alert')
+    });
+})
