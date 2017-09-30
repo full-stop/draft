@@ -2,7 +2,7 @@
  * @Date:   2017-09-29T23:24:42+08:00
  * @Email:  sgt_ah@163.com
  * @Filename: tooltip.js
- * @Last modified time: 2017-09-30T13:42:22+08:00
+ * @Last modified time: 2017-09-30T13:50:01+08:00
  */
 
 (function(win, factory) {
@@ -202,7 +202,7 @@
         }
 
     }
-	
+
     if ('function' === typeof define && define.amd) {
         return tooltip;
     } else if ('function' === typeof $ && $) {
