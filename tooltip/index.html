@@ -1,87 +1,49 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="Pragma" content="no-cache"></meta>
 	<title>Document</title>
-	<style>
+	<link rel="stylesheet" href="http://tzj2.iwgame.com/css/base.min.css">
+	<link rel="stylesheet" href="css/index.css" />
 
-	@keyframes move{
-		0%{
-			transform:translate3d(0px,30%,0);
-			opacity:0;
-		}
-		100%{
-			transform:translate3d(0px,0%,0);
-			opacity:1;
-		}
-	}
-		*{
-			padding:0;
-			margin:0;
-		}
-		.tipbox{
-			width: 500px;
-			height: 500px;
-			position:relative;
-			border:1px solid #ccc;
-			margin:0px auto;
-		}
-		.tooltip1,.tooltip2{
-			position:absolute;
-			width:30px;
-			height:30px;
-			background:red;
-		}
-		.tips1{
-			left:0;
-			top:0;
-		}
-		.tips2{
-			left:100px;
-			top:100px;
-		}
-		.tips3{
-			left:200px;
-			top:0;
-		}
-		.tips4{
-			left:300px;
-			top:400px
-		}
-		p{
-			text-align: center;
-		}
-		abbr{
-			text-decoration:underline;
-			cursor:pointer;
-		}
-		
-		#tooltip-text-box{
-			padding:20px;
-			border-radius:5px;
-			border:1px solid #ccc;
-			animation: move .35s ease;
-		}
-	</style>
 </head>
-<body>
-	<div class="tipbox">
-		<div class="tooltip1 tips1" tips="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"></div>
-		<div class="tooltip1 tips2" tips="http://image.zhangxinxu.com/image/blog/zxx_90_0824.jpg"></div>
-		<div class="tooltip2 tips3" tips="您好，很高兴见到你"></div>
-		<div class="tooltip2 tips4" tips="哈哈哈哈哈！真特么逗啊，你真特么逗"></div>
-	</div>
-	<p><abbr class="tooltip-text" cite="tooltip说明文字tooltip说明文字">说明文字</abbr></p>
 
-	<script src="tooltip.js"></script>
-	<script>
-		tooltip({
-			'dom':'tooltip-text',
-			'tips':'cite',
-			'type':2,
-			'tipBoxId':'tooltip-text-box',
-			'textPosition':'center'
-		})
-	</script>
+<body>
+	<div class="cnt-one-img-one">
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/lly.jpg" class="icons cnt-one-icon-1"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/ylcsg.jpg" class="icons cnt-one-icon-2"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/hhd.jpg" class="icons cnt-one-icon-3"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/ptd.jpg" class="icons cnt-one-icon-4"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/tmqfs.jpg" class="icons cnt-one-icon-5"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/bts.jpg" class="icons cnt-one-icon-6"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/ylfs.jpg" class="icons cnt-one-icon-7"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/lb-xyzj.jpg" class="icons cnt-one-icon-8"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/5j-sz-ml.jpg" class="icons cnt-one-icon-9"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/jsgmk.jpg" class="icons cnt-one-icon-10"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/cgzj.jpg" class="icons cnt-one-icon-11"></a>
+		<a href="javascript:;" rel="http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/qiongqiong.jpg" class="icons cnt-one-icon-13"></a>
+	</div>
+
+	<p>道冲而用之，或不盈。渊兮似万物之宗。<abbr class="text" cite="在我们不断的认识和了解的过程中，要不断的消磨认识的锋锐部分，消除跟中认识的意见分歧，融合各种观点的光辉，最终形成共同的观点。“道”似就是好象存在，却又深奥莫测。">解其纷，和其光，同其尘，湛兮似或存</abbr>。吾不知谁之子，象 帝之先。	</p>
 </body>
+
+<script src="js/tooltip.js"></script>
+<script>
+	tooltip({
+		'loading':'images/loading.gif',
+		'dom': 'icons',
+		'tips': 'rel'
+	});
+
+	tooltip({
+		'dom': 'text',
+		'tips': 'cite',
+		'type':2,
+		'tipBoxId':'tooltip-text-box'
+	});
+</script>
+</body>
+
 </html>

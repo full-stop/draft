@@ -1,0 +1,151 @@
+/**
+ * @Date:   2017-09-30T10:55:34+08:00
+ * @Email:  sgt_ah@163.com
+ * @Filename: index.css
+ * @Last modified time: 2017-09-30T11:52:33+08:00
+ */
+
+
+ @keyframes move{
+		0%{
+			transform:translate3d(0px,30%,0);
+			opacity:0;
+		}
+		100%{
+			transform:translate3d(0px,0%,0);
+			opacity:1;
+		}
+	}
+		*{
+			padding:0;
+			margin:0;
+		}
+		.tipbox{
+			width: 500px;
+			height: 500px;
+			position:relative;
+			border:1px solid #ccc;
+			margin:0px auto;
+		}
+		.tooltip1,.tooltip2{
+			position:absolute;
+			width:30px;
+			height:30px;
+			background:red;
+		}
+		.tips1{
+			left:0;
+			top:0;
+		}
+		.tips2{
+			left:100px;
+			top:100px;
+		}
+		.tips3{
+			left:200px;
+			top:0;
+		}
+		.tips4{
+			left:300px;
+			top:400px
+		}
+		p{
+			text-align: center;
+            margin-top:50px;
+            font-size:15px;
+		}
+		abbr{
+			text-decoration:underline;
+			cursor:pointer;
+		}
+
+		#tooltip-text-box{
+			padding:20px;
+            font-size:14px;
+			border-radius:5px;
+			border:1px solid #ccc;
+			animation: move .35s ease;
+            line-height:1.5em;
+		}
+
+
+
+.icons {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+}
+
+.cnt-one-img-one {
+    display: block;
+    position: relative;
+    margin-top: 25px;
+    width: 756px;
+    height: 679px;
+    background: url(http://hd.tzj2.iwgame.test/special/gqhdjh201709/img/cnt-one-table-one.jpg) no-repeat;
+}
+
+.cnt-one-icon-1 {
+    left: 177px;
+    top: 62px;
+}
+
+.cnt-one-icon-2 {
+    left: 177px;
+    top: 152px;
+}
+
+.cnt-one-icon-3 {
+    left: 177px;
+    top: 242px
+}
+
+.cnt-one-icon-4 {
+    left: 347px;
+    top: 242px
+}
+
+.cnt-one-icon-5 {
+    left: 177px;
+    top: 332px
+}
+
+.cnt-one-icon-6 {
+    left: 347px;
+    top: 332px
+}
+
+.cnt-one-icon-7 {
+    left: 177px;
+    top: 422px
+}
+
+.cnt-one-icon-8 {
+    left: 345px;
+    top: 422px
+}
+
+.cnt-one-icon-9 {
+    left: 539px;
+    top: 422px
+}
+
+.cnt-one-icon-10 {
+    left: 177px;
+    top: 512px
+}
+
+.cnt-one-icon-11 {
+    left: 345px;
+    top: 512px
+}
+
+.cnt-one-icon-12 {
+    left: 539px;
+    top: 512px
+}
+
+.cnt-one-icon-13 {
+    left: 177px;
+    top: 602px
+}
