@@ -2,7 +2,7 @@
  * @Date:   2017-09-29T23:24:42+08:00
  * @Email:  sgt_ah@163.com
  * @Filename: tooltip.js
- * @Last modified time: 2017-09-30T13:50:01+08:00
+ * @Last modified time: 2017-10-03T21:05:59+08:00
  */
 
 (function(win, factory) {
@@ -96,8 +96,12 @@
         var top = pos.top;
         var tw = pos.width;
         var th = pos.height;
-        var ch = document.documentElement.clientHeight || document.body.clientHeight;
+        var ch = Math.max(document.documentElement.offsetHeight || document.body.offsetHeight, document.documentElement.scrollHeight);
         var cw = document.documentElement.clientWidth || document.body.clientWidth;
+
+        if (height + top + th > ch) {
+            oDiv.style.top = top - height + 'px';
+        }
 
         if (width + left > cw) {
             oDiv.style.left = left - width + tw + 'px';
@@ -105,7 +109,7 @@
 
         oDiv.innerHTML = '';
         oDiv.appendChild(img);
-		oDiv.style.display="block";
+        oDiv.style.display = "block";
     }
 
     /* 处理文字类型tooltip的显示 */
@@ -114,7 +118,7 @@
         var width = 0;
         var height = 0;
 
-		oDiv.style.display="block";
+        oDiv.style.display = "block";
         oDiv.innerHTML = text;
 
         width = oDiv.offsetWidth;
@@ -161,12 +165,12 @@
                 oDiv.id = tipBoxId;
                 oDiv.style.cssText = 'display:none;position:absolute;left:' + pos.left + 'px;top:' + (pos.top + pos.height) + 'px;z-index:999999';
 
-				//事先插入DOM，隐藏掉，防止img onload事件与 oDiv onmouseout事件异步操作，无法正确删除插入的DOM。
+                //事先插入DOM，隐藏掉，防止img onload事件与 oDiv onmouseout事件异步操作，无法正确删除插入的DOM。
                 document.body.appendChild(oDiv);
 
                 if (loading && type === 1) {
                     oDiv.innerHTML = '<img src="' + params.loading + '" />';
-					oDiv.style.display="block";
+                    oDiv.style.display = "block";
                 }
 
                 if (source && type === 1) {
