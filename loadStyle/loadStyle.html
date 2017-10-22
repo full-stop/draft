@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="index.css" / >
+</head>
+<body>
+	
+</body>
+<script>
+
+	function loadStyle(node,callback,timeout){
+
+		var isLoaded = false,
+			timeout = timeout || 6e3,
+			time = new Date().getTime(),
+			curTime,
+
+		function poll(){
+
+			// 通过link对象的属性判断
+			if(node['sheet'] || node['stylesheet']){
+				if(node['sheet'] && node['sheet']['cssRules'] || node['stylesheet'] && node['stylesheet']['rules']){
+					isLoaded = true;
+				}else{
+					curTime = new Date().getTime();
+				}
+			}else{
+				curTime = new Date().getTime();
+			}
+
+			// 尝试是否可执行onload
+			node.addEventListener('load',function(e){
+				isLoaded = true;
+			},false);
+
+			// 6s钟的超时时间
+			if(curTime - time > timeout){
+				isLoaded = true;
+			}
+
+			if(isLoaded){
+				callback && callback();
+			}else{
+				setTimeout(arguments.callee,100);
+			}
+		}
+
+		if(node.attachEvent){ // IE 6 ~ 8 直接绑定onload事件
+			node.attachEvent('onload',callback);
+		}else{
+			poll(node);
+		}
+	}
+
+	loadStyle(document.getElementsByTagName('link')[0],function(){alert('success')})
+
+</script>
+</html>
