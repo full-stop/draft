@@ -47,7 +47,7 @@
         var $pop = $('.pop-mobile-container');
         var $mask = $('.mask');
 
-        if (params.hideClass) {
+        if (params && params.hideClass) {
             $pop.removeAttr('style').removeClass(params.hideClass).removeClass('pop-mobile-container');
         } else {
             $pop.removeAttr('style').removeClass('pop-mobile-container');
