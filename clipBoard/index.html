@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="text">
+    <button id="copyBtn" class="copy">copyBtn</button>
+    <script>
+        var copyBtn = document.getElementById('copyBtn');
+        var text = document.getElementById('text');
+
+        copyBtn.onclick=function(){
+
+            if(window.clipboardData){
+                clipboardData.setData('Text',text.value);
+                alert('复制成功');
+                return ;
+            }
+
+            try{
+                 text.select();
+                 var value = document.execCommand('copy');
+                 alert('复制成功！');
+            }catch(e){
+                alert('抱歉，复制失败，请你尝试手动复制:Ctrl+C');
+            }
+
+
+        }
+
+    </script>
+</body>
+</html>
