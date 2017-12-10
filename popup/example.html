@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .pop{
+            position: relative;
+            font-family:'Microsoft YaHei';
+            background:#fff;
+        }
+        .pop-alert{
+            width: 500px;
+            height: 300px;
+        }
+        .pop-alert2{
+            width: 500px;
+            height: 500px;
+        }
+        .close{
+            position:absolute;
+            right:-40px;
+            top:-2px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 26px;
+            color:#000;
+            text-decoration: none;
+        }
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="click1">click popup 1</button>
+    <div class="pop pop-alert hide">
+        <a href="javascript:;" class="close pop-close">&#10005;</a>
+        <div class="pop-in">
+            <button id="click2">click popup 2</button>
+            <button id="click3">click popup 3</button>
+        </div>
+    </div>
+</body>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/index_r.js"></script>
+<script src="js/popup.js"></script>
+
+</html>

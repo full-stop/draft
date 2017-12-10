@@ -1,5 +1,11 @@
 (function(slef, $) {
 
+    /*
+     *@ version :  0.9.3
+     *@ datetime:  2017/12/09
+     *@ author  :  gtshen
+     */
+
     var $body = $('body');
     var popMobileDefaultOpt = {
         'dom': '',
@@ -171,8 +177,8 @@
         after && after(params);
     }
 
-    popMobile.version = "0.9.2";
-    popMobile.datetime = "20171209";
+
+
     function popMobile(params) {
         new popOpen(params);
     }
