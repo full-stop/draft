@@ -7,7 +7,7 @@
      */
 
     var $body = $('body');
-    var popMobileDefaultOpt = {
+    var defaultOption = {
         'dom': '',
         'close': '.pop-close',
         'zIndex': 100,
@@ -55,9 +55,10 @@
 
     }
 
-    function popClose(params, $mask) {
+    function popClose(params) {
 
         var $dom = params.dom;
+        var $mask = params.$mask;
         var isLayout = $dom.is('.pop-mobile-layout');
 
         if (params.hideClass) {
@@ -84,27 +85,30 @@
         var $popLayout = $('.pop-mobile-layout');
         var $mask = $('.mask');
 
-        $pop.removeAttr('style').removeClass(popMobileDefaultOpt.showClass).removeClass('pop-mobile-container');
+        $pop.removeAttr('style').removeClass(defaultOption.showClass).removeClass('pop-mobile-container');
         $mask.remove();
         $popLayout.remove();
         $pop = $mask = $popLayout = null;
 
     }
 
-    function popOpen(params) {
+    function popMobile(params) {
 
         var $mask = $('<div class="mask"></div>');
         var popNum = $('.pop-mobile-container').length;
-        var $dom = params.dom || popMobileDefaultOpt.dom;
-        var close = params.close ? params.close : popMobileDefaultOpt.close;
-        var zIndex = params.zIndex || popMobileDefaultOpt.zIndex;
-        var mutex = params.mutex || popMobileDefaultOpt.mutex;
-        var before = params.before || popMobileDefaultOpt.before;
-        var after = params.after || popMobileDefaultOpt.after;
+        var $dom = params.dom || defaultOption.dom;
+        var close = params.close ? params.close : defaultOption.close;
+        var zIndex = params.zIndex || defaultOption.zIndex;
+        var mutex = params.mutex || defaultOption.mutex;
+        var before = params.before || defaultOption.before;
+        var after = params.after || defaultOption.after;
         var width = params.width || 0;
         var height = params.height || 0;
         var showClass = params.showClass || '';
         var popMobileHandleCore = function($dom, str) {
+
+            params.$mask = $mask;
+            before && before(params);
 
             $dom.css({
                 'position': 'fixed',
@@ -129,21 +133,23 @@
             });
 
             if (showClass) {
-                if (popMobileDefaultOpt.showClass.indexOf(showClass) == -1) {
-                    popMobileDefaultOpt.showClass += showClass;
+                if (defaultOption.showClass.indexOf(showClass) == -1) {
+                    defaultOption.showClass += showClass;
                 }
                 $dom.addClass(showClass);
             }
 
             if (str) {
+
                 $dom.css({
                     'width': width + 'rem',
                     'height': height + 'rem'
                 });
                 $dom.html(str);
+                $dom.children().first().show();
                 $body.append($dom);
                 params.dom = $dom;
-                before && before(params);
+
             }
 
             $dom.off('touchmove').on('touchmove', function(e) {
@@ -151,7 +157,7 @@
             });
 
             $dom.find(close).off('tap').on('tap', function(e) {
-                popClose(params, $mask);
+                popClose(params);
             });
 
         }
@@ -175,32 +181,35 @@
         }
 
         after && after(params);
+
+        this.close = function() {
+            popClose(params);
+        }
     }
-
-
-
-    function popMobile(params) {
-        new popOpen(params);
-    }
-
 
 
     if (typeof module != 'undefined' && typeof exports === 'object') {
-        exports.popMobile = popMobile;
-        exports.popMobileCloseAll = popMobileCloseAll;
+        exports.open = function(params) {
+            return new popMobile(params);
+        };
+        exports.closeAll = popMobileCloseAll;
         return;
     }
 
     if (typeof define != 'undefined' && define.amd) {
         define(['jquery'], function(require, exports, module) {
-            exports.popMobile = popMobile;
-            exports.popMobileCloseAll = popMobileCloseAll;
+            exports.open = function(params) {
+                return new popMobile(params);
+            };
+            exports.closeAll = popMobileCloseAll;
         });
         return;
     }
 
     if (typeof $ === 'function') {
-        $.popMobile = popMobile;
+        $.popMobile = function(params) {
+            return new popMobile(params);
+        };
         $.popMobileCloseAll = popMobileCloseAll;
         return;
     }
