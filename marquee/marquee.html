@@ -36,6 +36,7 @@
         .horiz li {
             display: inline;
         }
+
     </style>
 </head>
 
@@ -46,14 +47,14 @@
         <li>The man who has made up his mind to win will never say " Impossible".(Napoleon )</li>
         <li>There is no such thing as darkness; only a failure to see.</li>
         <li>Time is a bird for ever on the wing. ( T. W. Robertson )</li>
-        <li>If you do not learn to think when you are young, you may never learn.</li>
-        <li>A day is a miniature of eternity. ( Emerson )</li>
-        <li>Morality may consist solely in the courage of making a choice. </li>
-        <li> beautiful flowers of all. </li>
-        <li>Man is not made for defeat. A man can be destroyed but not defeated.</li>
-        <li>Hemingway, The Old Man and the Sea.</li>
-        <li>Man is not much beside the great birds and beasts.</li>
-        <li> There are more things to admire in men than to despise.</li>
+        <!-- <li>If you do not learn to think when you are young, you may never learn.</li> -->
+        <!-- <li>A day is a miniature of eternity. ( Emerson )</li> -->
+        <!-- <li>Morality may consist solely in the courage of making a choice. </li> -->
+        <!-- <li> beautiful flowers of all. </li> -->
+        <!-- <li>Man is not made for defeat. A man can be destroyed but not defeated.</li> -->
+        <!-- <li>Hemingway, The Old Man and the Sea.</li> -->
+        <!-- <li>Man is not much beside the great birds and beasts.</li> -->
+        <!-- <li> There are more things to admire in men than to despise.</li> -->
     </ul>
 
     <h2>horiz</h2>
@@ -74,7 +75,7 @@
 
     <!-- <script src="http://tzj2.iwgame.com/js/jquery.min.js"></script> -->
     <!-- <script src="http://act-res.tzj2.iwgame.cc/common/lib/require.js"></script> -->
-    <script src="marquee.min.js"></script>
+    <script src="marquee.js"></script>
     <script>
 
         /* CommonJS */
@@ -119,17 +120,22 @@
         // });
 
         /* Default */
+
+
         marquee({
             box: document.getElementById('vertical'),
             time: 30,
-            delay: 2500
+            delay: 2000,
+
         });
-        marquee({
-            box: document.getElementById('horiz'),
-            time: 30,
-            delay: 2500,
-            type:'horiz'
-        });
+
+
+        // marquee({
+        //     box: document.getElementById('horiz'),
+        //     time: 30,
+        //     delay: 2500,
+        //     type:'horiz'
+        // });
 
 
     </script>

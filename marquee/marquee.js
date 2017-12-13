@@ -10,24 +10,41 @@
     function vertical(params) {
 
         var box = params.box;
+        var boxHegiht = 0;
         var scrollHeight = scrollHeight || 0;
         var time = params.time || 36;
         var delay = params.delay || 1000;
         var scrollTop;
         var itmes = box.children;
         var len = itmes.length;
+        var multiLine = params.multiLine || 0;
 
-        box.appendChild(itmes[0].cloneNode(true));
- 
-        if (!scrollHeight) {
-            scrollHeight = itmes[0].offsetHeight;
+        scrollHeight ? '' : scrollHeight = itmes[0].offsetHeight;
+
+        if (multiLine) { //如果有多行的情况
+
+            var itemNum = Math.ceil(box.offsetHeight / scrollHeight); //计算多行情况下，会直接暴露出来的item数量
+
+            if (itmes.length * scrollHeight < box.offsetHeight) { //判断item数量是否被box全部显示完。
+                return;
+            }
+
+            for (var i = 0; i < itemNum; i++) { //循环暴露出来的数量
+                box.appendChild(itmes[i].cloneNode(true)); //复制直接暴露出来的item，防止滚动时断裂效果。
+                len++;
+            }
+
+            boxHegiht = box.offsetHeight;
+
+        } else {
+            box.appendChild(itmes[0].cloneNode(true));
         }
 
         setTimeout(function() {
 
             scrollTop = box.scrollTop;
 
-            if (scrollTop >= scrollHeight * len) {
+            if (scrollTop >= scrollHeight * len - boxHegiht) {
                 box.scrollTop = 0;
             } else {
                 box.scrollTop++;
@@ -35,6 +52,7 @@
                     setTimeout(arguments.callee, delay);
                     return;
                 }
+
             }
 
             setTimeout(arguments.callee, time);
@@ -71,7 +89,6 @@
 
         }, time);
 
-
     }
 
 
@@ -84,7 +101,6 @@
         type === 'vertical' ? vertical(params) : horizontal(params);
 
     }
-
 
     if (typeof module != 'undefined' && typeof exports === 'object') {
         //CommonJS
