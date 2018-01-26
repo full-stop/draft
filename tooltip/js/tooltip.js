@@ -1,22 +1,8 @@
-/**
- * @Date:   2017-09-29T23:24:42+08:00
- * @Email:  sgt_ah@163.com
- * @Filename: tooltip.js
- * @Last modified time: 2017-10-03T21:05:59+08:00
- */
-
-(function(win, factory) {
-    if ('function' === typeof define && define.amd) {
-        define(function() {
-            return factory();
-        });
-    } else {
-        factory(win);
-    }
-}(window, function(win) {
+(function (win) {
 
     /* 默认配置 */
     var defaults = {
+        'url':'',
         'dom': 'tooltip',
         /* tooltip 盒子的类名 */
         'tips': 'tips',
@@ -154,11 +140,11 @@
 
         for (var i = 0; i < dom.length; i++) {
 
-            dom[i].onmouseover = function(e) {
+            dom[i].onmouseover = function (e) {
 
                 var pos = getPos(this);
                 var img = new Image();
-                var source = this.getAttribute(tips);
+                var source = params.url ? params.url + this.getAttribute(tips) : this.getAttribute(tips);
                 var oDiv = document.createElement('DIV');
                 var selfWidth = this.offsetWidth;
 
@@ -176,16 +162,16 @@
                 if (source && type === 1) {
 
                     if (window.attachEvent) {
-                        img.attachEvent('onload', function() {
+                        img.attachEvent('onload', function () {
                             handleIMG(img, oDiv, pos, params);
                         });
                     } else {
-                        img.onload = function() {
+                        img.onload = function () {
                             handleIMG(img, oDiv, pos, params);
                         }
                     }
 
-                    img.onerror = onabort = function() {
+                    img.onerror = onabort = function () {
                         handleIMG(img, oDiv, pos, params);
                     }
 
@@ -199,7 +185,7 @@
 
             };
 
-            dom[i].onmouseout = function() {
+            dom[i].onmouseout = function () {
                 remove(tipBoxId);
             }
 
@@ -207,16 +193,10 @@
 
     }
 
-    if ('function' === typeof define && define.amd) {
-        return tooltip;
-    } else if ('function' === typeof $ && $) {
-        $.tooltip = function(params) {
-            return tooltip(params);
-        }
-    } else {
-        win.tooltip = function(params) {
-            return tooltip(params);
-        }
+    if(typeof module != undefined && typeof exports === 'object'){
+        module.exports = tooltip;
+    }else{
+        win.tooltip = tooltip;
     }
-
-}));
+    
+}(window));
